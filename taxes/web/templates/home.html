@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian's PAYE Calculator</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-6">
+
+    <div class="bg-white w-full max-w-2xl rounded-2xl shadow-lg p-8">
+
+        <h1 class="text-4xl font-bold text-slate-800 text-center mb-2">
+            UG PAYE Calculator
+        </h1>
+
+        <p class="text-center text-slate-500 mb-8">
+            Calculate your PAYE, NSSF, deductions, and net income.
+        </p>
+
+        <form method="POST" class="flex flex-col sm:flex-row gap-4 mb-8">
+            {% csrf_token %}
+
+            <input 
+                type="number" 
+                name="income" 
+                value="{{ income }}"
+                placeholder="Enter monthly income in UGX"
+                required
+                class="flex-1 border border-slate-300 rounded-xl px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+
+            <button 
+                type="submit"
+                class="bg-blue-600 text-white px-6 py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition"
+            >
+                Calculate Net Income
+            </button>
+        </form>
+
+        <div class="border-t pt-6">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">
+                Payslip Summary
+            </h2>
+
+            <div class="space-y-3 text-lg">
+                <div class="flex justify-between border-b pb-2">
+                    <span class="font-semibold text-slate-700">Income (UGX)</span>
+                    <span class="text-slate-900">{{ income }}</span>
+                </div>
+
+                <div class="flex justify-between border-b pb-2">
+                    <span class="font-semibold text-slate-700">Total PAYE</span>
+                    <span class="text-red-600 font-semibold">{{ total_paye }}</span>
+                </div>
+
+                <div class="flex justify-between border-b pb-2">
+                    <span class="font-semibold text-slate-700">Total NSSF</span>
+                    <span class="text-red-600 font-semibold">{{ total_nssf }}</span>
+                </div>
+
+                <div class="flex justify-between border-b pb-2">
+                    <span class="font-semibold text-slate-700">Total Deductions</span>
+                    <span class="text-red-700 font-bold">{{ total_deductions }}</span>
+                </div>
+
+                <div class="flex justify-between bg-green-50 rounded-xl p-4 mt-4">
+                    <span class="font-bold text-green-800 text-xl">Net Income</span>
+                    <span class="font-bold text-green-800 text-xl">{{ net_income }}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
