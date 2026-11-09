@@ -14,6 +14,8 @@ Monthly bands for resident individuals:
 | 410,001 to 10,000,000 | 25,000 + 30% of the amount over 410,000 |
 | Over 10,000,000 | As above, plus an extra 10% of the amount over 10,000,000 |
 
+NSSF is the employee's 5% of gross pay. The employer's 10% is paid on top of salary, so it doesn't reduce take-home pay.
+
 The calculation lives in [`taxes/web/views.py`](taxes/web/views.py).
 
 ## Run it locally

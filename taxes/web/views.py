@@ -22,9 +22,11 @@ def homePage(request):
             income = int(income)
 
             # -----------------------------
-            # NSSF CALCULATION (10%)
+            # NSSF CALCULATION (5%)
             # -----------------------------
-            nssf_rate = 10 / 100
+            # The employee pays 5% of gross pay; the employer's 10% is
+            # paid on top of salary, so it doesn't reduce take-home pay.
+            nssf_rate = 5 / 100
             total_nssf = income * nssf_rate
 
             # -----------------------------
